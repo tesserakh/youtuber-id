@@ -1,7 +1,7 @@
 name: socialblade-level-1
 on:
   schedule:
-    - cron: '0 23 * * *' # at 6 AM UTC+7
+    - cron: '0 1 * * *' # at 8 AM UTC+7
   workflow_dispatch:
 
 jobs:
