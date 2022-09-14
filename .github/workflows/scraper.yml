@@ -24,8 +24,12 @@ jobs:
                   
       - name: Run script
         run: | 
+          echo 'Scraping Social Blade...'
           python socialblade.py
+          echo 'Scraping Graphy Repo...'
           python graphyrepo.py
+          echo 'Scraping Nox Influencer...'
+          python noxinfluencer.py
         
       - name: Commit result
         run: |
