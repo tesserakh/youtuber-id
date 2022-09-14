@@ -31,6 +31,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add result/*.csv
-          timestamp=$(TZ='America/New_York' date +'%a, %F at %H:%M %Z')
+          timestamp=$(TZ='Asia/Jakarta' date +'%a, %F at %H:%M %Z')
           git commit -m "Updated: ${timestamp}" || exit 0
           git push
