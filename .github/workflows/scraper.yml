@@ -1,4 +1,4 @@
-name: socialblade-level-1
+name: scraping-level-1
 on:
   schedule:
     - cron: '0 1 * * *' # at 8 AM UTC+7
@@ -27,15 +27,15 @@ jobs:
         env:
           TOKEN: ${{ secrets.CRED_CONTENT }}
           SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
-          DATA_PATH_ID: ${{ secrets.DATA_PATH_ID }}
+          DRIVE_PATH_ID: ${{ secrets.DRIVE_PATH_ID }}
         run: | 
-          echo $TOKEN >> $DATA_PATH_ID
+          echo $TOKEN > secret
           echo 'Scraping Social Blade...'
           python socialblade.py
           echo 'Scraping Graphy Repo...'
           python graphyrepo.py
           echo 'Scraping Nox Influencer...'
           python noxinfluencer.py
-          echo 'Forward to Google Drive'
+          echo 'Forwarding to Google Drive...'
           python forwarder.py
-          rm $DATA_PATH_ID
+          rm secret
