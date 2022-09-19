@@ -27,7 +27,7 @@ jobs:
         env:
           TOKEN: ${{ secrets.CRED_CONTENT }}
           SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
-          DATA_PATH_ID: ${{ secrets.DATA_PATH_ID }}
+          DRIVE_PATH_ID: ${{ secrets.DRIVE_PATH_ID }}
         run: | 
           echo $TOKEN > secret
           ls -l
@@ -39,5 +39,5 @@ jobs:
           python noxinfluencer.py
           echo 'Forward to Google Drive'
           python forwarder.py
-          rm $DATA_PATH_ID
+          rm secret
           ls -l
