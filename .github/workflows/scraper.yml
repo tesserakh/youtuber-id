@@ -29,7 +29,8 @@ jobs:
           SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
           DATA_PATH_ID: ${{ secrets.DATA_PATH_ID }}
         run: | 
-          echo $TOKEN >> $DATA_PATH_ID
+          echo $TOKEN > $DATA_PATH_ID
+          ls -l
           echo 'Scraping Social Blade...'
           python socialblade.py
           echo 'Scraping Graphy Repo...'
@@ -39,3 +40,4 @@ jobs:
           echo 'Forward to Google Drive'
           python forwarder.py
           rm $DATA_PATH_ID
+          ls -l
