@@ -30,10 +30,10 @@ jobs:
           DRIVE_PATH_ID: ${{ secrets.DRIVE_PATH_ID }}
         run: | 
           echo $TOKEN > secret
-          #echo 'Scraping Social Blade...'
-          #python socialblade.py
-          echo 'Scraping Graphy Repo...'
-          python graphyrepo.py
+          echo 'Scraping Social Blade...'
+          python socialblade.py
+          #echo 'Scraping Graphy Repo...'
+          #python graphyrepo.py
           echo 'Scraping Nox Influencer...'
           python noxinfluencer.py
           echo 'Forwarding to Google Drive...'
