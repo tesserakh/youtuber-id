@@ -21,7 +21,8 @@ def get_data(urls:list):
                 page.goto(url, timeout=150000)
                 page.wait_for_load_state()
                 logging.info(f"Get {url}")
-                page.wait_for_selector('body > div:nth-child(12) > div:nth-child(2) > div:nth-child(5)', timeout=150000)
+                #page.wait_for_selector('body > div:nth-child(12) > div:nth-child(2) > div:nth-child(5)', timeout=150000)
+                page.wait_for_selector('body > div:nth-child(13) > div:nth-child(2) > div:nth-child(5)', timeout=90000)
                 # parse content
                 data += parse(page)
             # close browser
@@ -34,7 +35,8 @@ def get_data(urls:list):
 def parse(page:Page):
     """ Parse content """
     filtered_by = page.query_selector('#sort-by-current-title').inner_text().replace('Sorted by:', '').strip()
-    items = page.query_selector_all('body > div:nth-child(12) > div:nth-child(2) > div')
+    #items = page.query_selector_all('body > div:nth-child(12) > div:nth-child(2) > div')
+    items = page.query_selector_all('body > div:nth-child(13) > div:nth-child(2) > div')
     data = []
     for item in items[4:]:
         col = item.query_selector_all('div')
