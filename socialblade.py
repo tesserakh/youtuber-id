@@ -8,6 +8,9 @@ import re
 # Logger
 logging.basicConfig(level=logging.DEBUG)
 
+with_banner = False
+n_div = '13' if with_banner==True else '12'
+
 def get_data(urls:list):
     """ Get data from pages """
     try:
@@ -21,8 +24,7 @@ def get_data(urls:list):
                 page.goto(url, timeout=150000)
                 page.wait_for_load_state()
                 logging.info(f"Get {url}")
-                page.wait_for_selector('body > div:nth-child(12) > div:nth-child(2) > div:nth-child(5)', timeout=150000)
-                #page.wait_for_selector('body > div:nth-child(13) > div:nth-child(2) > div:nth-child(5)', timeout=90000)
+                page.wait_for_selector(f'body > div:nth-child({n_div}) > div:nth-child(2) > div:nth-child(5)', timeout=90000)
                 # parse content
                 data += parse(page)
             # close browser
@@ -35,8 +37,7 @@ def get_data(urls:list):
 def parse(page:Page):
     """ Parse content """
     filtered_by = page.query_selector('#sort-by-current-title').inner_text().replace('Sorted by:', '').strip()
-    #items = page.query_selector_all('body > div:nth-child(12) > div:nth-child(2) > div')
-    items = page.query_selector_all('body > div:nth-child(13) > div:nth-child(2) > div')
+    items = page.query_selector_all(f'body > div:nth-child({n_div}) > div:nth-child(2) > div')
     data = []
     for item in items[4:]:
         col = item.query_selector_all('div')
@@ -57,6 +58,7 @@ def parse(page:Page):
     return data
 
 if __name__ == '__main__':
+    logging.debug(f'with_banner={with_banner}')
     urls = [
         'https://socialblade.com/youtube/top/country/id/mostsubscribed',
         'https://socialblade.com/youtube/top/country/id/mostviewed'

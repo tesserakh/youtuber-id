@@ -2,7 +2,7 @@
 
 Retrieve Indonesian youtuber rank from various social media analytics websites.
 
-- Graphy Repo
-- Nox Influencer
 - Social Blade
+- Nox Influencer
+- ~~Graphy Repo~~ (the service seems not continued)
 
