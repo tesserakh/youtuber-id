@@ -21,8 +21,8 @@ def get_data(urls:list):
                 page.goto(url, timeout=150000)
                 page.wait_for_load_state()
                 logging.info(f"Get {url}")
-                #page.wait_for_selector('body > div:nth-child(12) > div:nth-child(2) > div:nth-child(5)', timeout=150000)
-                page.wait_for_selector('body > div:nth-child(13) > div:nth-child(2) > div:nth-child(5)', timeout=90000)
+                page.wait_for_selector('body > div:nth-child(12) > div:nth-child(2) > div:nth-child(5)', timeout=150000)
+                #page.wait_for_selector('body > div:nth-child(13) > div:nth-child(2) > div:nth-child(5)', timeout=90000)
                 # parse content
                 data += parse(page)
             # close browser

@@ -1,8 +1,10 @@
 from bs4 import BeautifulSoup
 from datetime import datetime
 import requests
+import logging
 import csv
 
+logging.basicConfig(level=logging.DEBUG)
 
 def get_pagesource(url:str):
     """Get html page
@@ -77,6 +79,8 @@ if __name__ == '__main__':
         data += parse(res)
 
     filename = 'noxinfluencer_youtube_' + datetime.utcnow().strftime('%Y-%m-%d') + '.csv'
-    with open('result/' + filename, 'w') as f:
+    filepath = 'result/' + filename
+    with open(filepath, 'w') as f:
         writer = csv.writer(f)
         writer.writerows(data)
+        logging.info(f'Data saved to {filepath}')
