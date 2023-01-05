@@ -8,8 +8,8 @@ import re
 # Logger
 logging.basicConfig(level=logging.DEBUG)
 
-with_banner = False
-n_div = '13' if with_banner==True else '12'
+with_banner = True
+n_div = '13' if with_banner else '12'
 
 def get_data(urls:list):
     """ Get data from pages """
