@@ -8,7 +8,7 @@ import re
 # Logger
 logging.basicConfig(level=logging.DEBUG)
 
-with_banner = True
+with_banner = False
 n_div = '13' if with_banner else '12'
 
 def get_data(urls:list):
@@ -19,7 +19,7 @@ def get_data(urls:list):
             browser = p.firefox.launch()
             page = browser.new_page()
             data = []
-            for url in urls:                
+            for url in urls:
                 # access page
                 page.goto(url, timeout=150000)
                 page.wait_for_load_state()
