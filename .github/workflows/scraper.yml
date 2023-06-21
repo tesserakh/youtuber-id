@@ -19,7 +19,7 @@ jobs:
       - name: Install module
         run: |
           python -m pip install --upgrade pip
-          pip install requests beautifulsoup4 playwright
+          pip install requests beautifulsoup4 playwright selectolax
           pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib
           playwright install --with-deps firefox
                   
@@ -28,7 +28,7 @@ jobs:
           TOKEN: ${{ secrets.CRED_CONTENT }}
           SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
           DRIVE_PATH_ID: ${{ secrets.DRIVE_PATH_ID }}
-        run: | 
+        run: |
           echo $TOKEN > secret
           #echo 'Scraping Social Blade...'
           #python socialblade.py
@@ -36,6 +36,8 @@ jobs:
           #python graphyrepo.py
           echo 'Scraping Nox Influencer...'
           python noxinfluencer.py
+          echo 'Scraping vidIQ...'
+          python vidiq.py
           echo 'Forwarding to Google Drive...'
           python forwarder.py
           rm secret
